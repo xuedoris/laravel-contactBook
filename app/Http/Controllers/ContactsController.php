@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contact;
 use DB;
+use Auth;
 
 class ContactsController extends Controller
 {
@@ -50,7 +51,8 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = Auth::user()->contacts()->where('id', $id)->first();
+        return view('contacts.detail')->with('contact', $contact);
     }
 
     /**
@@ -61,7 +63,9 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $types = DB::table('phonetype')->pluck('phonetype', 'id');
+        $contact = Auth::user()->contacts()->where('id', $id)->first();
+        return view('contacts.edit')->with(['types'=>$types, 'contact'=>$contact]);
     }
 
     /**
@@ -73,7 +77,14 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Auth::user()->contacts()->where('id', $id)->first();
+        $contact->update([
+            'contactname' => $request['contactname'],
+            'phonenumber' => $request['phonenumber'],
+            'email' =>$request['email'],
+            'phonetype_id' => $request['phonetype_id'],
+        ]);
+        return view('contacts.edit')->with('result', 'success');
     }
 
     /**
@@ -84,6 +95,8 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contact::destroy($id);
+        $contacts = Auth::user()->contacts()->orderBy('created_at', 'desc')->paginate(5);
+        return view('home', compact('contacts'));
     }
 }

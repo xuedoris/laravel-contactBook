@@ -13,7 +13,7 @@
                         <p>{{$contact->contactname}}</p>
                         <span class="clearfix">post at {!!$contact->created_at->diffForHumans()!!}</span>
                     @empty
-                        <p>No articles is available.</p>
+                        <p>No contacts is available.</p>
                     @endforelse
                     </div>
                     <div class="row">
