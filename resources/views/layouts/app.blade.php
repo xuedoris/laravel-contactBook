@@ -31,5 +31,6 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    @yield('custom_js')
 </body>
 </html>

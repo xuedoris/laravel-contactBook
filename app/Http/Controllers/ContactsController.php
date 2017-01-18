@@ -97,6 +97,25 @@ class ContactsController extends Controller
     {
         Contact::destroy($id);
         $contacts = Auth::user()->contacts()->orderBy('created_at', 'desc')->paginate(5);
-        return view('home', compact('contacts'));
+        $returnHTML = view('home', compact('contacts'))->render();
+        return response()->json(array('success' => true, 'html'=>$returnHTML));
+        
+    }
+
+    /**
+     * Search and show the requested contacts
+     *
+     * @param  string $input
+     * @return \Illuminate\Http\Response
+     */
+    public function search($input)
+    {
+        
+        $contacts = Auth::user()->contacts()
+                        ->where('contactname', 'LIKE', $input.'%')
+                        ->orWhere('phonenumber', 'LIKE', $input.'%')->paginate(10);
+        $returnHTML = view('contacts.searchresult', compact('contacts'))->render();
+
+        return response()->json(array('success' => true, 'html'=>$returnHTML));
     }
 }
