@@ -24,4 +24,6 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('/contacts/{input}/search', 'ContactsController@search');
 });
 
+Route::get('/locale/{locale}', 'LocaleController@index');
+
 

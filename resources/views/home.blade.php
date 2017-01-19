@@ -12,8 +12,8 @@
                 	<div id="contacts-wraper">
                 	<ul class="list-group">
 		                @forelse($contacts as $contact)
-							<li class="list-group-item"><a href="{{ url('/contacts/'.$contact->id) }}">{!!$contact->contactname!!}, phone number: {!!$contact->phonenumber!!}</a>
-								<a href="{{ url('/contacts/'.$contact->id) }}" class="btn btn-xs btn-danger pull-right ajax-delete">Delete Contact</a>
+							<li class="list-group-item"><a href="{{ url('/contacts/'.$contact->id) }}">{!!$contact->contactname!!}, phone number: {!!$contact->shortphonenumber!!}</a>
+								<a href="{{ url('/contacts/'.$contact->id) }}" class="btn btn-xs btn-danger pull-right ajax-delete">{{lang('del_contact')}}</a>
 							</li>
 						@empty
 							<li class="list-group-item">No contacts is available.</li>

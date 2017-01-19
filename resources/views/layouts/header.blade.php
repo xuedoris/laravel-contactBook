@@ -19,7 +19,16 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                @if(!App::isLocale('en'))
+                <li><a href="{{ url('/locale/en') }}" class="small">English</a>
+                </li>
+                @endif
+                @if(!App::isLocale('fr'))
+                <li><a href="{{ url('/locale/fr') }}" class="small">Français</a></li>
+                @endif
+                @if(!App::isLocale('cn'))
+                <li><a href="{{ url('/locale/cn') }}" class="small">中文</a></li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->

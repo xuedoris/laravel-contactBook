@@ -14,4 +14,9 @@ class Contact extends Model
     protected $fillable = [
         'user_id', 'contactname', 'phonenumber', 'phonetype_id', 'email',
     ];
+
+    public function getShortPhonenumberAttribute()
+    {
+        return substr($this->phonenumber, 0, 7).'...';
+    }
 }
