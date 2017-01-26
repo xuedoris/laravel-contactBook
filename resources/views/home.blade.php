@@ -21,6 +21,11 @@
 					</ul>
 					</div>
                     <a class="btn btn-lg btn-success" href="{{ url('/contacts/create') }}">Create a new Contact</a>
+                    @if (Auth::user()->g2fa_secretkey)
+                    <a href="{{ url('2fa/disable') }}" class="btn btn-warning">Disable 2FA</a>
+                    @else
+                    <a href="{{ url('2fa/enable') }}" class="btn btn-primary">Enable 2FA</a>
+                    @endif
                 </div>
             </div>
         </div>

@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+    @yield('custom_css')
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

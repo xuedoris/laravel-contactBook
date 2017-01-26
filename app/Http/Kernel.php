@@ -30,7 +30,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\LocaleSwitch::class,// set locale middleware to ensure every request has the correct locale from session
+            \App\Http\Middleware\LocaleSwitch::class,// set locale middleware to ensure every web request has the correct locale from session
         ],
 
         'api' => [

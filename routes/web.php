@@ -20,9 +20,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function() {
-  Route::resource('/contacts', 'ContactsController');
-  Route::get('/contacts/{input}/search', 'ContactsController@search');
+  	Route::resource('/contacts', 'ContactsController');
+  	Route::get('/contacts/{input}/search', 'ContactsController@search');
+  	//Google 2FA routes
+  	Route::get('/2fa/enable', 'TwoFAController@enable');
+	Route::get('/2fa/disable', 'TwoFAController@disable');
 });
+
+Route::get('/2fa/validate', 'TwoFAController@getValidateToken');
+Route::post('/2fa/validate', 'TwoFAController@postValidateToken')->middleware('throttle:3');
 
 Route::get('/locale/{locale}', 'LocaleController@index');
 

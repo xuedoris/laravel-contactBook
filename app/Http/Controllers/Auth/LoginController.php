@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -43,5 +45,24 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    /**
+     * Send the post-authentication response.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Contracts\Auth\Authenticatable $user
+     * @return \Illuminate\Http\Response
+     */
+    private function authenticated(Request $request, $user)
+    {
+        if ($user->g2fa_secretkey) {
+            Auth::logout();
+
+            session()->put('2fa:user:id', $user->id);
+            return redirect('2fa/validate');
+        }
+
+        return redirect()->intended($this->redirectTo);
     }
 }
