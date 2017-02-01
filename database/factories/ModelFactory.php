@@ -29,5 +29,6 @@ $factory->define(App\Contact::class, function (Faker\Generator $faker) {
         'phonetype_id' => DB::table('phonetype')->get()->random()->id,
         'email' => $faker->safeEmail,
         'user_id' => App\User::all()->random()->id,
+        'bday' => Carbon\Carbon::createFromDate(rand(1920, 2016), 2, 8),
     ];
 });

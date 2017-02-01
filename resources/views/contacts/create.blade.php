@@ -67,6 +67,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('bday') ? ' has-error' : '' }}">
+                            <label for="bday" class="col-md-4 control-label">Birthday</label>
+
+                            <div class="col-md-6">
+                                <input id="bday" type="date" class="form-control" name="bday" value="{{ old('post_on') }}" autofocus>
+
+                                @if ($errors->has('bday'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('bday') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <input type="submit" class="btn btn-primary pull-right">

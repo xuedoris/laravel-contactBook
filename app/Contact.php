@@ -12,7 +12,14 @@ class Contact extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'contactname', 'phonenumber', 'phonetype_id', 'email',
+        'user_id', 'contactname', 'phonenumber', 'phonetype_id', 'email', 'bday'
+    ];
+
+    /*
+    By default, created_at column is a Carbon instance. To add another column to be Carbon instance, a date mutator needs to be as follow
+    */
+    protected $dates = [
+        'bday',
     ];
 
     public function getShortPhonenumberAttribute()
