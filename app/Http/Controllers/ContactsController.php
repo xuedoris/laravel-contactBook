@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
-use App\Mail\BirthdayNotification;
-use Carbon\Carbon;
 use DB;
 use Auth;
-use Mail;
 
 class ContactsController extends Controller
 {
@@ -20,20 +17,7 @@ class ContactsController extends Controller
     public function index()
     {
         $contacts = Auth::user()->contacts()->paginate(10);
-        $bdays = DB::table('contacts')->select('contactname', 'bday')
-            ->where('user_id', Auth::user()->id)
-            ->whereNotNull('bday')
-            ->get();
-        //dd($bdays);
-
-        $filtered = $bdays->filter(function ($value, $key) {
-            $comingDay = Carbon::parse('+1 week');
-            $carbonDate = Carbon::createFromFormat('Y-m-d', $value->bday);
-            return $carbonDate->isBirthday($comingDay);
-        });
-        Mail::to(Auth::user())->send(new BirthdayNotification($filtered));
-
-        //return view('contacts.index', compact('contacts'));
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
