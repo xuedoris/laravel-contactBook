@@ -49,10 +49,11 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Contact $contact)
     {
-        $contact = Auth::user()->contacts()->where('id', $id)->first();
-        return view('contacts.detail')->with('contact', $contact);
+        if(Auth::user()->contacts->contains($contact)){
+            return view('contacts.detail')->with('contact', $contact);
+        }
     }
 
     /**
