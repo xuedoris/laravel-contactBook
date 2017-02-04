@@ -39,7 +39,8 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        Contact::create($request->all());
+        Auth::user()->addContact($request->all());
+        //Contact::create();
         return view('contacts.create')->with('result', 'success');
     }
 
@@ -113,8 +114,8 @@ class ContactsController extends Controller
     {
         
         $contacts = Auth::user()->contacts()
-                        ->where('contactname', 'LIKE', $input.'%')
-                        ->orWhere('phonenumber', 'LIKE', $input.'%')->paginate(10);
+            ->filter($input)
+            ->paginate(10);
         $returnHTML = view('contacts.searchresult', compact('contacts'))->render();
 
         return response()->json(array('success' => true, 'html'=>$returnHTML));

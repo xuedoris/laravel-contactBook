@@ -26,4 +26,10 @@ class Contact extends Model
     {
         return substr($this->phonenumber, 0, 7).'...';
     }
+
+    public function scopeFilter($query, $filters)
+    {
+        $query->where('contactname', 'LIKE', $filters.'%')
+            ->orWhere('phonenumber', 'LIKE', $filters.'%');
+    }
 }
