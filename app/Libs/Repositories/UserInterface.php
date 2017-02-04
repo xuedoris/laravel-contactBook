@@ -7,5 +7,7 @@ interface UserInterface {
 
     public function find($id);
 
+    public function getTopContacts($id, $type, $number);
+
     public function create($input);
 }

@@ -27,8 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $currentUser = $this->user->find(Auth::user()->id);
-        $contacts = $currentUser->contacts()->orderBy('created_at', 'desc')->paginate(5);
+        $contacts = $this->user->getTopContacts(Auth::user()->id, 'newest-added', 5);
+        //dd($user);
         return view('home', compact('contacts'));
     }
 }
