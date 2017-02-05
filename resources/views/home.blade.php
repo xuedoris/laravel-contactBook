@@ -8,6 +8,9 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
+                    @if($flash = session('welcomeMessage'))
+                    <h1>{{$flash}}</h1>
+                    @endif
                 	<h2>Newly Added Contacts</h2>
                 	<div id="contacts-wraper">
                 	<ul class="list-group">
