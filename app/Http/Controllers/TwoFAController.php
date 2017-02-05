@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ValidateTwoFARequest;
 use Auth;
-use App\User;
 use Google2FA;
 
 class TwoFAController extends Controller
@@ -14,33 +13,33 @@ class TwoFAController extends Controller
     private $keyPrefix = '';
 
     /**
-     * 
+     *
      *
      * @return \Illuminate\Http\Response
      */
     public function enable()
     {
-    	$user = Auth::user();
-    	$this->secretKey = Google2FA::generateSecretKey($this->keySize, $this->keyPrefix);
-    	$user->g2fa_secretkey = $this->secretKey;
-    	$user->save();
-    	$inlineUrl = Google2FA::getQRCodeInline(
-		    config('app.name'),
-		    'xuedoris@hot.com',
-		    $this->secretKey
-		);
-		return view('auth.2fa.enable', ['image' => $inlineUrl,
+        $user = Auth::user();
+        $this->secretKey = Google2FA::generateSecretKey($this->keySize, $this->keyPrefix);
+        $user->g2fa_secretkey = $this->secretKey;
+        $user->save();
+        $inlineUrl = Google2FA::getQRCodeInline(
+            config('app.name'),
+            'xuedoris@hot.com',
+            $this->secretKey
+        );
+        return view('auth.2fa.enable', ['image' => $inlineUrl,
             'secret' => $this->secretKey]);
     }
 
     /**
-     * 
+     *
      *
      * @return \Illuminate\Http\Response
      */
     public function disable()
     {
-    	$user = Auth::user();
+        $user = Auth::user();
 
         //make secret column blank
         $user->g2fa_secretkey = null;
@@ -64,24 +63,15 @@ class TwoFAController extends Controller
 
     /**
      *
-     * @param  Illuminate\Http\Request $request
+     * @param Illuminate\Http\Request|ValidateTwoFARequest $request
      * @return \Illuminate\Http\Response
      */
-    public function postValidateToken(Request $request)
+    public function postValidateToken(ValidateTwoFARequest $request)
     {
-        //get user id and create cache key
+        //login and redirect user
         $userId = $request->session()->pull('2fa:user:id');
-        $user = User::findOrFail(
-                $userId
-            );
-        $valid = Google2FA::verifyKey($user->g2fa_secretkey, $request['totp']);
-
-        if($valid) {
-        	//login and redirect user
-	        Auth::loginUsingId($userId);
-
-	        return redirect('/home');
-        } else return redirect('login');
-
+        Auth::loginUsingId($userId);
+        session()->flash('welcomeMessage', 'Welcome !!!');
+        return redirect('/home');;
     }
 }
