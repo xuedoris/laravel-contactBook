@@ -38,6 +38,13 @@
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
+                    <li>
+                    @if (Auth::user()->g2fa_secretkey)
+                        <a href="{{ url('2fa/disable') }}" class="btn btn-warning">Disable 2FA</a>
+                    @else
+                        <a href="{{ url('2fa/enable') }}" class="btn btn-primary">Enable 2FA</a>
+                    @endif
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -63,6 +70,7 @@
                                 </form>
                             </li>
                         </ul>
+
                     </li>
                 @endif
             </ul>

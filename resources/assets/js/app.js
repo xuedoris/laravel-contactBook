@@ -13,8 +13,16 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('createcontact', require('./components/Createcontact.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        showCreate: false
+    },
+    methods: {
+        toggleCreateForm: function(){
+            this.showCreate = !this.showCreate;
+        },
+    }
 });

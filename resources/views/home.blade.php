@@ -4,8 +4,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+            <div class="panel panel-default container-fluid">
+                <div class="panel-heading row">
+                    <div class="col-xs-11"><h4>Contact Dashboard</h4></div>
+                    <div class="col-xs-1">
+                    <button type="button" class="btn btn-success" title="Create a new contact" @click="toggleCreateForm" :disabled="showCreate">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    </div>
+                </div>
 
                 <div class="panel-body">
                     @if($flash = session('welcomeMessage'))
@@ -23,11 +30,97 @@
 						@endforelse
 					</ul>
 					</div>
-                    <a class="btn btn-lg btn-success" href="{{ url('/contacts/create') }}">Create a new Contact</a>
-                    @if (Auth::user()->g2fa_secretkey)
-                    <a href="{{ url('2fa/disable') }}" class="btn btn-warning">Disable 2FA</a>
+                    <!--<a class="btn btn-lg btn-success" @click="toggleCreateForm" :disabled="isDisable">Create a new Contact</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" v-show="showCreate">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Create a new Contact<button type="button" class="close" @click="toggleCreateForm">&times;</button></div>
+
+                <div class="panel-body">
+                    @if(isset($result))
+                        <p>Contact Added successfully!</p>
                     @else
-                    <a href="{{ url('2fa/enable') }}" class="btn btn-primary">Enable 2FA</a>
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/contacts') }}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                            <div class="form-group{{ $errors->has('contactname') ? ' has-error' : '' }}">
+                                <label for="contactname" class="col-md-4 control-label">Contact Name</label>
+
+                                <div class="col-md-6">
+                                    <input id="contactname" type="text" class="form-control" name="contactname" value="{{ old('contactname') }}" required autofocus>
+
+                                    @if ($errors->has('contactname'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('contactname') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('phonenumber') ? ' has-error' : '' }}">
+                                <label for="phonenumber" class="col-md-4 control-label">Phone number:</label>
+
+                                <div class="col-md-6">
+                                    <input id="phonenumber" type="text" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}" required autofocus>
+                                    @if ($errors->has('phonenumber'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('phonenumber') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phonetype" class="col-md-4 control-label">Phone Type:</label>
+
+                                <div class="col-md-6">
+                                    <select id="phonetype" class="form-control" name="phonetype_id" autofocus>
+                                        @foreach ($types as $id=>$phonetype)
+                                            <option value="{{$id}}">{{$phonetype}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
+
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('bday') ? ' has-error' : '' }}">
+                                <label for="bday" class="col-md-4 control-label">Birthday</label>
+
+                                <div class="col-md-6">
+                                    <input id="bday" type="date" class="form-control" name="bday" value="{{ old('post_on') }}" autofocus>
+
+                                    @if ($errors->has('bday'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('bday') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <input type="submit" class="btn btn-primary pull-right">
+                                </div>
+                            </div>
+                        </form>
                     @endif
                 </div>
             </div>

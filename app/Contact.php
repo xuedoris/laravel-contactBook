@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
@@ -31,5 +32,27 @@ class Contact extends Model
     {
         $query->where('contactname', 'LIKE', $filters.'%')
             ->orWhere('phonenumber', 'LIKE', $filters.'%');
+    }
+
+    public static function getCollection($startTime = null, $endTime = null)
+    {
+        // no need to use the Threshold
+        //Get data from the day before yesterday.
+        $startTime = Carbon::create(2017, 2, 3, 0)->subDays(2);
+        $endTime = Carbon::create(2017, 2, 3, 0)->subDays(1);
+
+        $contacts = self::whereBetween('updated_at', [$startTime, $endTime])
+                        ->orderBy('updated_at', 'DESC')
+                        ->get();
+        $filtered = $contacts->filter(function ($value, $key) {
+            $emailField = json_decode($value->email, true);
+            return is_array($emailField);
+        });
+        return $filtered;
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group');
     }
 }
