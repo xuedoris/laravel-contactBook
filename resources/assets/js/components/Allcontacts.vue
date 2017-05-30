@@ -1,6 +1,6 @@
 <template>
     <div class="panel-body">
-        <h2>Adding a new contact</h2>
+        <h2>Display All Contacts</h2>
 
     </div>
 </template>
