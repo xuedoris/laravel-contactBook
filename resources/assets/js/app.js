@@ -5,7 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
+import router from './routes';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13,10 +14,9 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('createcontact', require('./components/Createcontact.vue'));
-
 const app = new Vue({
     el: '#app',
+    router,
     data: {
         showCreate: false
     },
