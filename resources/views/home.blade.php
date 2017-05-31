@@ -10,21 +10,12 @@
                     @endif
                     <ul class="nav nav-tabs">
                         <router-link tag="li" to="/" exact><a>Contact Dashboard</a></router-link>
-                        <router-link tag="li" to="/contacts" exact><a>All Contacts</a></router-link>
+                        <router-link tag="li" to="/contacts"><a>All Contacts</a></router-link>
                         <router-link tag="li" to="/contacts/create">
                                 <a>Create a new contact</a>
                         </router-link>
                     </ul>
-                        <router-view>
-                            @forelse($contacts as $contact)
-                                <li class="list-group-item"><a href="{{ url('/contacts/'.$contact->id) }}">{!!$contact->contactname!!}, phone number: {!!$contact->shortphonenumber!!}</a>
-                                    <a href="{{ url('/contacts/'.$contact->id) }}" class="btn btn-xs btn-danger pull-right ajax-delete">{{lang('del_contact')}}</a>
-                                </li>
-                            @empty
-                                <li class="list-group-item">No contacts is available.</li>
-                            @endforelse
-                        </router-view>
-
+                        <router-view></router-view>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="panel-body">
-        <h2>Newly Added Contacts</h2>
+        <h4>Newly Added Contacts</h4>
         <div class="row">
             <div class="col-md-4"><h5>Contact Name</h5></div>
             <div class="col-md-8"><h5>Phone Number</h5></div>

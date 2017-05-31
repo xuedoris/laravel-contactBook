@@ -17,9 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/home', 'HomeController@index');
   	Route::resource('/contacts', 'ContactsController');
   	Route::get('/contacts/{input}/search', 'ContactsController@search');
     Route::get('/contacts/group/{group}', 'GroupsController@index');
