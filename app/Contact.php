@@ -51,6 +51,11 @@ class Contact extends Model
         return $filtered;
     }
 
+    public function phonetype()
+    {
+        return $this->belongsTo('App\Phonetype');
+    }
+
     public function groups()
     {
         return $this->belongsToMany('App\Group');

@@ -104,6 +104,25 @@ class ContactsController extends Controller
         return response()->json(array('success' => true, 'html'=>$returnHTML));
         
     }
+    /**
+     * Retrieve a list of contacts based on top list type
+     * Newest, Recently viwed and etc.
+     * @param string $listType
+     * @return json
+     * */
+    public function top($listType)
+    {
+        $type = 'updated_at';
+        switch ($listType){
+            case 'newly-added':
+                $type = 'created_at';
+                break;
+        }
+
+        $contacts = Auth::user()->contacts()->orderBy($type, 'desc')->take(10)->get();
+        $contacts->load('phonetype');
+        return response()->json($contacts);
+    }
 
     /**
      * Search and show the requested contacts

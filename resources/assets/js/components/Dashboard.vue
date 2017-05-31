@@ -2,12 +2,30 @@
     <div class="panel-body">
         <h4>Newly Added Contacts</h4>
         <div class="row">
-            <div class="col-md-4"><h5>Contact Name</h5></div>
-            <div class="col-md-8"><h5>Phone Number</h5></div>
+            <div class="col-md-3"><h5>Contact Name</h5></div>
+            <div class="col-md-3"><h5>Phone Number</h5></div>
+            <div class="col-md-2"><h5>Phone Type</h5></div>
+            <div class="col-md-4"><h5>Email</h5></div>
         </div>
-        <div class="row" v-for="contact in contacts">
-            <div class="col-md-4">{{contact.contactname}}</div>
-            <div class="col-md-8">{{contact.phonenumber}}</div>
+        <div class="row" v-for="contact in newelyAdded">
+            <div class="col-md-3">{{contact.contactname}}</div>
+            <div class="col-md-3">{{contact.phonenumber}}</div>
+            <div class="col-md-2">{{contact.phonetype.phonetype}}</div>
+            <div class="col-md-4">{{contact.email}}</div>
+        </div>
+        <hr/>
+        <h4>Recently updated Contacts</h4>
+        <div class="row">
+            <div class="col-md-3"><h5>Contact Name</h5></div>
+            <div class="col-md-3"><h5>Phone Number</h5></div>
+            <div class="col-md-2"><h5>Phone Type</h5></div>
+            <div class="col-md-4"><h5>Email</h5></div>
+        </div>
+        <div class="row" v-for="contact in recentUpdated">
+            <div class="col-md-3">{{contact.contactname}}</div>
+            <div class="col-md-3">{{contact.phonenumber}}</div>
+            <div class="col-md-2">{{contact.phonetype.phonetype}}</div>
+            <div class="col-md-4">{{contact.email}}</div>
         </div>
     </div>
 </template>
@@ -17,13 +35,17 @@
     export default {
         data: function () {
             return {
-                contacts: {}
+                newelyAdded: {},
+                recentUpdated: {}
             }
         },
         created: function(){
             let self = this;
-            Contact.searchContacts().then(function (response) {
-                self.contacts = response.data;
+            Contact.topContacts('newly-added').then(function (response) {
+                self.newelyAdded = response.data;
+            });
+            Contact.topContacts('default').then(function (response) {
+                self.recentUpdated = response.data;
             });
         }
     }
