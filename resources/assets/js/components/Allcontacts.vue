@@ -12,7 +12,10 @@
         </div>
         <div class="row" v-for="contact in contacts">
             <div class="col-md-4"><router-link :to="{ path: 'contacts/'+contact.id }">{{contact.contactname}}</router-link></div>
-            <div class="col-md-8">{{contact.phonenumber}}</div>
+            <div class="col-md-4">{{contact.phonenumber}}</div>
+            <div class="col-md-4">
+                <router-link :to="{ path: 'contacts/'+contact.id }" class="btn btn-xs btn-danger pull-right ajax-delete">Delete</router-link>
+            </div>
         </div>
     </div>
 </template>
