@@ -9,6 +9,10 @@ let routes = [
         component: require('./components/Createcontact.vue')
     },
     {
+        path: '/contacts/:id',
+        component: require('./components/Editcontact.vue')
+    },
+    {
         path: '/contacts',
         component: require('./components/Allcontacts.vue')
     }

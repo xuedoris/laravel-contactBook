@@ -113,12 +113,9 @@ class ContactsController extends Controller
      */
     public function search($input)
     {
-        
         $contacts = Auth::user()->contacts()
             ->filter($input)
             ->paginate(10);
-        $returnHTML = view('contacts.searchresult', compact('contacts'))->render();
-
-        return response()->json(array('success' => true, 'html'=>$returnHTML));
+        return response()->json($contacts->items());
     }
 }
