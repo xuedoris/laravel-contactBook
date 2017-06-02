@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use Validator;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -27,10 +28,26 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        $types = DB::table('phonetype')->pluck('phonetype', 'id');
-        return view('contacts.create', compact('types'));
+        $types = DB::table('phonetype')->get();
+        return response()->json($types);
     }
 
+    /**
+     * Get a validator for save.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'contactname' => 'required|max:255',
+            'phonenumber' => 'required|numeric',
+            'phonetype_id' => 'required|int',
+            'email' => 'required|email|max:255',
+            'bday' => 'date'
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -39,9 +56,10 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
         Auth::user()->addContact($request->all());
         //Contact::create();
-        return view('contacts.create')->with('result', 'success');
+        return response()->json(['message' => 'success']);
     }
 
     /**

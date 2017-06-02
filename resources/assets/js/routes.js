@@ -6,11 +6,11 @@ let routes = [
     },
     {
         path: '/contacts/create',
-        component: require('./components/Createcontact.vue')
+        component: require('./components/Createcontact.vue'),
     },
     {
         path: '/contacts/:id',
-        component: require('./components/Editcontact.vue')
+        component: require('./components/Createcontact.vue'),
     },
     {
         path: '/contacts',
