@@ -14,7 +14,7 @@
             <div class="col-md-4"><router-link :to="{ path: 'contacts/'+contact.id }">{{contact.contactname}}</router-link></div>
             <div class="col-md-4">{{contact.phonenumber}}</div>
             <div class="col-md-4">
-                <router-link :to="{ path: 'contacts/'+contact.id }" class="btn btn-xs btn-danger pull-right ajax-delete">Delete</router-link>
+                <a href="#" @click.prevent="deleteContact(contact.id)" class="btn btn-xs btn-danger pull-right">Delete</a>
             </div>
         </div>
     </div>
@@ -39,6 +39,15 @@
                 let self = this;
                 Contact.searchContacts(keyword).then(function (response) {
                     self.contacts = response.data;
+                });
+            },
+            deleteContact: function(id){
+                let self = this;
+                Contact.deleteContact(id).then(function (response) {
+                    self.contacts = self.contacts.filter(function(el) {
+                        return el.id !== id;
+                    });
+
                 });
             }
         }

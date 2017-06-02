@@ -72,7 +72,10 @@ class ContactsController extends Controller
     public function show(Contact $contact)
     {
         if(Auth::user()->contacts->contains($contact)){
-            return view('contacts.detail')->with('contact', $contact);
+            return response()->json([
+                'select' => DB::table('phonetype')->get(),
+                'contact' => $contact
+            ]);
         }
     }
 
@@ -104,8 +107,9 @@ class ContactsController extends Controller
             'phonenumber' => $request['phonenumber'],
             'email' =>$request['email'],
             'phonetype_id' => $request['phonetype_id'],
+            'bday' => $request['bday']
         ]);
-        return view('contacts.edit')->with('result', 'success');
+        return response()->json(['message' => 'update success']);
     }
 
     /**
@@ -117,9 +121,8 @@ class ContactsController extends Controller
     public function destroy($id)
     {
         Contact::destroy($id);
-        $contacts = Auth::user()->contacts()->orderBy('created_at', 'desc')->paginate(5);
-        $returnHTML = view('home', compact('contacts'))->render();
-        return response()->json(array('success' => true, 'html'=>$returnHTML));
+        $contacts = Auth::user()->contacts->take(10);
+        return response()->json($contacts);
         
     }
     /**
