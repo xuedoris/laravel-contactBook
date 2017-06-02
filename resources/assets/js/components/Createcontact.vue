@@ -1,10 +1,11 @@
 <template>
     <div class="panel-body">
+        <h3 class="text-center" v-if="$route.params.id">View or Edit the contact</h3>
         <div class="alert alert-success fade in" v-if="form.message">
             <a href="#" class="close" data-dismiss="alert" @click="form.message=false">&times;</a>
             <strong v-text="form.message"></strong>
         </div>
-        <form class="form-horizontal" role="form" method="POST" action="/contacts" @submit.prevent="form.submit('post', '/contacts')" @keydown="form.errors.clear($event.target.name)">
+        <form class="form-horizontal" role="form" method="POST" action="/contacts" @submit.prevent="onSubmit($route.params.id)" @keydown="form.errors.clear($event.target.name)">
 
             <div class="form-group" :class="{'has-error': form.errors.has('contactname')}">
                 <label for="contactname" class="col-md-4 control-label">Contact Name</label>
@@ -90,9 +91,29 @@
         },
         created: function(){
             var self = this;
-            axios.get('/contacts/create').then(function (response) {
-                self.select = response.data;
-            });
+            if(this.$route.params.id){
+                axios.get('/contacts/'+this.$route.params.id).then(function (response) {
+                    self.select = response.data.select;
+                    self.form.contactname = response.data.contact.contactname;
+                    self.form.phonenumber = response.data.contact.phonenumber;
+                    self.form.phonetype_id = response.data.contact.phonetype_id;
+                    self.form.email = response.data.contact.email;
+                    self.form.bday = response.data.contact.bday;
+                });
+            } else {
+                axios.get('/contacts/create').then(function (response) {
+                    self.select = response.data;
+                });
+            }
         },
+        methods: {
+            onSubmit: function(id){
+                if(id) {
+                    this.form.submit('patch', '/contacts/'+id);
+                } else {
+                    this.form.submit('post', '/contacts');
+                }
+            }
+        }
     }
 </script>

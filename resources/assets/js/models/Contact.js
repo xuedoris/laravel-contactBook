@@ -8,6 +8,9 @@ class Contact {
     static topContacts(type) {
         return axios.get('/contacts/top/'+type);
     }
+    static deleteContact(id){
+        return axios.delete('/contacts/'+id);
+    }
 }
 
 export default Contact;
