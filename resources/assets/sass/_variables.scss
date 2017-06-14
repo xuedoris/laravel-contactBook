@@ -1,6 +1,7 @@
-
+// Responsiveness
+$grid-float-breakpoint: 992px;
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #ffffff;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -17,13 +18,21 @@ $brand-warning: #cbb956;
 $brand-danger:  #bf5329;
 
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
+$font-size-base: 16px;
 $line-height-base: 1.6;
-$text-color: #636b6f;
+$text-color: #7d7d7d;
+$headings-font-family: "Raleway", sans-serif;
+$headings-color: #333333;
+$link-color: #666;
+$link-hover-color: #666;
+$headings-font-weight: bold;
 
 // Navbar
 $navbar-default-bg: #fff;
+$navbar-default-link-color: #fff;
+$navbar-default-link-active-color: #fff;
+$navbar-default-link-active-bg: rgba(0,0,0,0.7);
+$navbar-default-link-hover-color:rgba(255,255,255,0.7);
 
 // Buttons
 $btn-default-color: $text-color;
@@ -35,3 +44,5 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+
