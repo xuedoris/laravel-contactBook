@@ -17,7 +17,8 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .webpack('app.js')
+        .webpack('welcome.js');
 });
 
 gulp.task('images', function () {
