@@ -1,7 +1,9 @@
 const elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var responsive = require('gulp-responsive-images');
+var imagemin = require('gulp-imagemin');
 
 require('laravel-elixir-vue-2');
-
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -16,4 +18,43 @@ require('laravel-elixir-vue-2');
 elixir(mix => {
     mix.sass('app.scss')
        .webpack('app.js');
+});
+
+gulp.task('images', function () {
+    //Using Globs for path matching
+    gulp.src('resources/assets/images/*.+(png|jpg|gif|svg)')
+        .pipe(responsive({
+            'header-bg.jpg': [
+                {
+                    quality: 90
+                },
+                {
+                    width: 900,
+                    quality: 50,
+                    suffix: '-900'
+                },
+                {
+                    width: 700,
+                    quality: 50,
+                    suffix: '-700'
+                }
+            ],
+            'browser.jpg': [
+                {
+                    quality: 90
+                },
+                {
+                    width: 750,
+                    quality: 50,
+                    suffix: '-750'
+                },
+                {
+                    width: 400,
+                    quality: 50,
+                    suffix: '-400'
+                }
+            ]
+        }))
+        .pipe(imagemin())
+        .pipe(gulp.dest('public/images/'));
 });

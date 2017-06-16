@@ -13,7 +13,7 @@
         <link href="/css/app.css" rel="stylesheet">
         <link href="/css/font-awesome.min.css" rel="stylesheet">
 
-        <script src="https://unpkg.com/vue@2.3.3"></script>
+        <!--<script src="https://unpkg.com/vue@2.3.3"></script>-->
     </head>
     <body>
     <div id="app">
@@ -30,7 +30,7 @@
 
                     </div>
 
-                    <ul class="nav navbar-nav navbar-right" :class="{open: showNav}">
+                    <ul class="nav navbar-nav navbar-right" id="toggle-menu" :class="{open: showNav}">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Services</a></li>
@@ -46,7 +46,8 @@
                     <a href="#" class="btn btn-primary btn-large">Get Started!</a>
                     <a href="#" class="more-link">Learn More</a>
                 </section>
-                <img class="img-responsive center-block" src="images/browser.jpg" alt="">
+
+                <img class="img-responsive center-block" src="images/browser.jpg" srcset="images/browser-400.jpg 400w, images/browser-750.jpg 750w, images/browser.jpg 900w" alt="yah" >
             </div>
         </header>
     </div>
@@ -216,13 +217,19 @@
         <p class="copyright">&#169; 2017 <code>XContactbook</code> </p>
     </footer>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                showNav: false
-            }
-        })
+        $(document).ready(function(){
+            $("header nav a.btn-nav").click(function(){
+                $("#toggle-menu").toggleClass("open");
+            });
+        });
+//        var app = new Vue({
+//            el: '#app',
+//            data: {
+//                showNav: false
+//            }
+//        })
     </script>
     </body>
 

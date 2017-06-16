@@ -7690,6 +7690,18 @@ section {
   background-size: cover;
 }
 
+@media (max-width: 768px) {
+  .header-wrapper {
+    background-image: url("../images/header-bg-900.jpg");
+  }
+}
+
+@media (max-width: 400px) {
+  .header-wrapper {
+    background-image: url("../images/header-bg-700.jpg");
+  }
+}
+
 header .navbar {
   margin-top: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
