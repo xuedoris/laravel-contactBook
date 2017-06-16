@@ -7684,6 +7684,18 @@ section {
   padding-bottom: 20px;
 }
 
+@media (max-width: 992px) {
+  a {
+    padding: 1.5em 1.5em 1.5em 0;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 /* Header */
 .header-wrapper {
   background: #222 url("../images/header-bg.jpg") no-repeat 50% top;
@@ -7943,18 +7955,6 @@ footer a {
 
 .social-links, .copyright {
   margin: 20px auto;
-}
-
-@media (max-width: 992px) {
-  a {
-    padding: 1.5em 1.5em 1.5em 0;
-  }
-}
-
-@media (max-width: 400px) {
-  body {
-    font-size: 14px;
-  }
 }
 
 /*# sourceMappingURL=app.css.map */

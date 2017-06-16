@@ -1,0 +1,24 @@
+/*Global styles*/
+.btn {
+  &,
+  &:hover,
+  &:focus {
+    border-color: transparent;
+  }
+}
+.red-text {
+  color: #fb2f3a;
+}
+section {
+  padding-bottom:20px;
+}
+a {
+  @media (max-width: $screen-md-min) {
+    padding: 1.5em 1.5em 1.5em 0;
+  }
+}
+@media (max-width: 400px) {
+  body {
+    font-size:14px;
+  }
+}
