@@ -46,7 +46,6 @@
                     <a href="#" class="btn btn-primary btn-large">Get Started!</a>
                     <a href="#" class="more-link">Learn More</a>
                 </section>
-
                 <img class="img-responsive center-block" src="images/browser.jpg" srcset="images/browser-400.jpg 400w, images/browser-750.jpg 750w, images/browser.jpg 900w" alt="yah" >
             </div>
         </header>
@@ -100,6 +99,151 @@
                     <a href="#" class="btn btn-primary btn-md">Read More</a>
                 </section>
             </div>
+        </header>
+    </div>
+    <section class="features ">
+        <div class="container">
+            <div class="row">
+                <div class="h-line hidden-phone">&nbsp;</div>
+                <section class="col-sm-3 text-center">
+                    <span class="btn icon">
+                        <i class="fa fa-wpexplorer" aria-hidden="true"></i>
+                    </span>
+                    <h4>Explore</h4>
+                    <p>Explore all the new features. Proin gravida nibh vel velit auctor aliquet.
+                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
+                        nec sagittis sem nibh id elit.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-md">Read More</a>
+                </section>
+                <section class="col-sm-3 text-center">
+                    <span class="btn icon">
+                        <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                    </span>
+                    <h4>Login</h4>
+                    <p>Login to your account anytime. Proin gravida nibh vel velit auctor aliquet.
+                    Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
+                    nec sagittis sem nibh id elit.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-md">Read More</a>
+                </section>
+                <section class="col-sm-3 text-center">
+                    <span class="btn icon">
+                        <i class="fa fa-gg-circle" aria-hidden="true"></i>
+                    </span>
+                    <h4>Manage</h4>
+                    <p>Manage the contacts the way you want it. Proin gravida nibh vel velit auctor aliquet.
+                    Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
+                    nec sagittis sem nibh id elit.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-md">Read More</a>
+                </section>
+                <section class="col-sm-3 text-center">
+                    <span class="btn icon">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </span>
+                    <h4>User-Friendly</h4>
+                    <p>Super user friendly interface. Proin gravida nibh vel velit auctor aliquet.
+                    Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
+                    nec sagittis sem nibh id elit.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-md">Read More</a>
+                </section>
+            </div>
+        </div>
+    </section>
+    <section class="portfolios">
+        <div class="container">
+            <div class="row content">
+                <section class="col-sm-3 text-left">
+                    <h4>Portfolio</h4>
+                    <p>All our users are happy with this product. Proin gravida nibh vel velit auctor aliquet.
+                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
+                        nec sagittis sem nibh id elit.
+                    </p>
+                    <h5><a class="red-text" href="#">Our portfolios</a></h5>
+                </section>
+                <section class="col-sm-3 text-center">
+                    <img class="img-responsive center-block" src="images/portfolio.png">
+                    <h5>First Client</h5>
+                    <p>A client here</p>
+                </section>
+                <section class="col-sm-3 text-center">
+                    <img class="img-responsive center-block" src="images/portfolio.png">
+                    <h5>Second Client</h5>
+                    <p>A client here</p>
+                </section>
+                <section class="col-sm-3 text-center">
+                    <img class="img-responsive center-block" src="images/portfolio.png">
+                    <h5>Third Client</h5>
+                    <p>A client here</p>
+                </section>
+            </div>
+            <div class="row clients">
+                <section class="col-sm-3">
+                    <img class="img-responsive center-block" src="images/client.png">
+                </section>
+                <section class="col-sm-3">
+                    <img class="img-responsive center-block" src="images/client.png">
+                </section>
+                <section class="col-sm-3">
+                    <img class="img-responsive center-block" src="images/client.png">
+                </section>
+                <section class="col-sm-3">
+                    <img class="img-responsive center-block" src="images/client.png">
+                </section>
+            </div>
+        </div>
+    </section>
+    <section class="other-info">
+        <div class="container">
+        <div class="row">
+            <section class="col-sm-4">
+                <h4>Testimonials</h4>
+                <div class="testimonial-content">
+                    <img class="img-responsive pull-left" src="images/thumbnail.png">
+                    <blockquote>
+                        <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.</p>
+                        <cite>
+                            <strong>QQ com</strong> <br>
+                            <a class="red-text" href="#">www.qq.com</a>
+                        </cite>
+                    </blockquote>
+                </div>
+            </section>
+            <section class="col-sm-4">
+                <h4>Our latest News</h4>
+                <ul class="list-unstyled">
+                    <li>
+                        <h5><a>First news fjdia fjdioa ffjdiaof fdiaofjs</a></h5>
+                        <p>June 4, 2017 | Post by<a class="red-text">admin</a></p>
+                    </li>
+                    <li>
+                        <h5><a>First news fjdia fjdioa ffjdiaof fdiaofjs</a></h5>
+                        <p>June 4, 2017 | Post by<a class="red-text">admin</a></p>
+                    </li>
+                    <li>
+                        <h5><a>First news fjdia fjdioa ffjdiaof fdiaofjs</a></h5>
+                        <p>June 4, 2017 | Post by<a class="red-text">admin</a></p>
+                    </li>
+                </ul>
+            </section>
+            <section class="col-sm-4">
+                <h4>Lastest Tweets</h4>
+                <ul class="list-unstyled tweet-list">
+                    <li class="clearfix">
+                        <img class="img-responsive pull-left" src="images/thumbnail.png">
+                        <p>fjdia fjdioa ffjdiaof fdiaofjs nibh vel velit auctor aliquet. Aenean sollicitudin,<a class="red-text"> https://www.w3schools.com/</a></p>
+                    </li>
+                    <li class="clearfix">
+                        <img class="img-responsive pull-left" src="images/thumbnail.png">
+                        <p>fjdia fjdioa ffjdiaof fdiaofjs nibh vel velit auctor aliquet. Aenean sollicitudin,<a class="red-text"> https://www.w3schools.com/</a></p>
+                    </li>
+                    <li class="clearfix">
+                        <img class="img-responsive pull-left" src="images/thumbnail.png">
+                        <p>fjdia fjdioa ffjdiaof fdiaofjs nibh vel velit auctor aliquet. Aenean sollicitudin,<a class="red-text"> https://www.w3schools.com/</a></p>
+                    </li>
+            </section>
         </div>
     </section>
     <section class="portfolios">
