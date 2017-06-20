@@ -34,7 +34,7 @@
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Services</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Demo page</a></li>
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div><!-- /.container-fluid -->
@@ -47,7 +47,6 @@
                     <a href="#" class="more-link">Learn More</a>
                 </section>
 
-                <img class="img-responsive center-block" src="images/browser.jpg" srcset="images/browser-400.jpg 400w, images/browser-750.jpg 750w, images/browser.jpg 900w" alt="yah" >
                 <imageslider></imageslider>
             </div>
         </header>

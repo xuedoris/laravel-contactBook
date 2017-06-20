@@ -56,22 +56,10 @@ header .navbar-nav {
     height: 72px;
     position: absolute;
     z-index: 10;
-    -webkit-transform: translate(-200%,0);
-    -moz-transform: translate(-200%,0);
-    -ms-transform: translate(-200%,0);
-    -o-transform: translate(-200%,0);
     transform: translate(-200%,0);
-    -webkit-transition: transform 0.3s ease;
-    -moz-transition: transform 0.3s ease;
-    -ms-transition: transform 0.3s ease;
-    -o-transition: transform 0.3s ease;
     transition: transform 0.3s ease;
 
     &.open {
-      -webkit-transform: translate(0,0);
-      -moz-transform: translate(0,0);
-      -ms-transform: translate(0,0);
-      -o-transform: translate(0,0);
       transform: translate(0,0);
     }
 

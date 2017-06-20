@@ -40,7 +40,7 @@ gulp.task('images', function () {
                     suffix: '-700'
                 }
             ],
-            'browser.jpg': [
+            'browser*.jpg': [
                 {
                     quality: 90
                 },
